@@ -1,6 +1,5 @@
 
 #include "Wipers.h"
-#include "Rain_Sensor.h"
 #include "Manager_Wipers.h"
 
 class Manager_Actuators
@@ -15,19 +14,18 @@ public:
 		speed_result = speedResult;
 	}
 
-	void SetRainSensor() {
-		rain_volume.SetVolume(std::get<1>(speed_result->CalculateWipersSpeed()));
+	void SetWiper(){
+		speed.SetWiperSpeed(std::get<0>(speed_result->CalculateWipersSpeed()));
 	}
 	
 
-	Rain_Sensor GetVolume() const {
-		return rain_volume;
+	Wipers GetWiperSpeed() const{
+		return speed;
 	}
 
-	
 	Manager_Actuators(Manager_Wipers* speedResult) : speed_result(speedResult) {}
 
 private:
-	Rain_Sensor rain_volume;
+	Wipers speed;
 	Manager_Wipers* speed_result;
 };

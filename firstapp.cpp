@@ -2,39 +2,41 @@
 //
 
 #include <iostream>
+#include <random>
 #include "Manager_Actuators.h"
 
 int main()
 {
+	Manager_Wipers m_w = Manager_Wipers();
 
-	Manager_Wipers m_w{};
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_real_distribution<> dis(-2.0, 14.0);
 
 	m_w.SetButton(ButtonState::Off);
-	std::cout << "Wipers speed: " << std::get<1>(m_w.CalculateWipersSpeed()) << std::endl;
+	std::cout << "Wipers speed: " << std::get<0>(m_w.CalculateWipersSpeed()) << std::endl;
 
 	m_w.SetButton(ButtonState::Low);
-	std::cout << "Wipers speed: " << std::get<1>(m_w.CalculateWipersSpeed()) << std::endl;
+	std::cout << "Wipers speed: " << std::get<0>(m_w.CalculateWipersSpeed()) << std::endl;
 
 	m_w.SetButton(ButtonState::High);
-	std::cout << "Wipers speed: " << std::get<1>(m_w.CalculateWipersSpeed()) << std::endl;
+	std::cout << "Wipers speed: " << std::get<0>(m_w.CalculateWipersSpeed()) << std::endl;
 
-	m_w.SetButton(ButtonState::Automatic);
-	m_w.SetSensor_Rain(0.4); // no rain
-	std::cout << "Wipers speed: " << std::get<1>(m_w.CalculateWipersSpeed()) << std::endl;
+	for (int i = 0; i < 10; ++i) {
+		double random_value = dis(gen);
 
-	m_w.SetButton(ButtonState::Automatic);
-	m_w.SetSensor_Rain(2.4); // low rain
-	std::cout << "Wipers speed: " << std::get<1>(m_w.CalculateWipersSpeed()) << std::endl;
+		m_w.SetButton(ButtonState::Automatic);
+		m_w.SetSensor_Rain(random_value);
+		std::cout << "Wipers speed: " << std::get<0>(m_w.CalculateWipersSpeed()) << std::endl;
 
-	m_w.SetButton(ButtonState::Automatic);
-	m_w.SetSensor_Rain(9.4); // high rain
-	std::cout << "Wipers speed: " << std::get<1>(m_w.CalculateWipersSpeed()) << std::endl;
-
+	
+	
+	}
 
 	Manager_Actuators m_a(&m_w);
-	m_a.SetRainSensor();
+	m_a.SetWiper();
 
-	std::cout << "Rain: " << m_a.GetVolume().GetVolume() << std::endl;
+	std::cout << "Wipers Speed: " << m_a.GetWiperSpeed().GetWiperSpeed() << std::endl;
 }
 
 

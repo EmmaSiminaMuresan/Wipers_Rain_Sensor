@@ -14,12 +14,6 @@ typedef enum WipersSpeed
 	High,	// 2
 };
 
-typedef enum RainSensor
-{
-	None = 0, // wiperspeed = 0
-	Low,	// 1 // wiperspeed = 1
-	High,	// 2 // wiperspeed = 2
-};
 
 constexpr float NoRain_Low{ 0 }; // no rain 
 constexpr float NoRain_High{ 1.99 }; // no rain 

@@ -8,5 +8,5 @@ public:
 	// void SetButton (const ButtonState buttonState)
 	MOCK_METHOD(void, SetButton, (const ButtonState bt), ());
 	MOCK_METHOD(void, SetVolume, (const float), ());
-	MOCK_METHOD((std::tuple<WipersSpeed, RainSensor>), CalculateWipersSpeed, (), ());
+	MOCK_METHOD((std::tuple<WipersSpeed>), CalculateWipersSpeed, (), ());
 };		
