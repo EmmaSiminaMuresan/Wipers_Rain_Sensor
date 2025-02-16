@@ -22,6 +22,6 @@ This project is a **C++ implementation of a wiper control system**, designed to 
 This project was developed as part of the "Exploring C++ and Google Test: Mastering the Software Development Cycle" workshop at ARRK Engineering Academy. The workshop provided hands-on experience with C++17, unit testing methodologies, and the Google Test framework, focusing on mocking, structured validation, and automation for reliable software development.
 
 ## 📌 Notes:
--Requires a C++17-compatible compiler.
--Google Test is used for unit testing (mocking supported).
--This implementation can be expanded for real-world automotive applications.
+- Requires a C++17-compatible compiler.
+- Google Test is used for unit testing (mocking supported).
+- This implementation can be expanded for real-world automotive applications.
